@@ -1,0 +1,276 @@
+/* ---------- Temas ---------- */
+/* Noite (padrão): preto → cinza → roxo, como o céu à noite. */
+:root, [data-theme="noite"] {
+  --text: #eeedf6;
+  --text-dim: rgba(205, 200, 225, .58);
+  --glass: rgba(255, 255, 255, .04);
+  --glass-strong: rgba(255, 255, 255, .085);
+  --edge: rgba(255, 255, 255, .17);
+  --edge-dim: rgba(255, 255, 255, .075);
+  --shadow: rgba(0, 0, 0, .55);
+  --accent: #8b5cf6;
+  --accent-2: #c084fc;
+  --glow: rgba(150, 100, 255, .55);
+  --card-tint: rgba(22, 19, 34, .55);
+  --logo-glow: rgba(140, 90, 255, .55);
+  --rim-1: rgba(192, 132, 252, .55);
+  --rim-2: rgba(244, 114, 182, .35);
+  --rim-3: rgba(129, 140, 248, .45);
+  --bubble-shine: rgba(255, 255, 255, .62);
+  --bubble-fill: rgba(167, 139, 250, .10);
+  --bubble-glow: rgba(140, 90, 255, .22);
+  --stars: .55;
+  --sky:
+    radial-gradient(60% 38% at 88% -6%, rgba(190, 170, 255, .20), transparent 62%),
+    radial-gradient(85% 60% at -10% 108%, rgba(124, 58, 237, .55), transparent 64%),
+    radial-gradient(70% 45% at 110% 100%, rgba(88, 28, 135, .45), transparent 70%),
+    radial-gradient(90% 40% at 50% 55%, rgba(60, 60, 75, .25), transparent 75%),
+    linear-gradient(180deg, #040406 0%, #0b0a10 34%, #141220 68%, #1e1433 100%);
+}
+
+/* Aurora: o visual azul-violeta original. */
+[data-theme="aurora"] {
+  --text: #f4f6ff;
+  --text-dim: rgba(235, 240, 255, .62);
+  --glass: rgba(255, 255, 255, .10);
+  --glass-strong: rgba(255, 255, 255, .18);
+  --edge: rgba(255, 255, 255, .34);
+  --edge-dim: rgba(255, 255, 255, .10);
+  --shadow: rgba(4, 6, 20, .38);
+  --accent: #8fb4ff;
+  --accent-2: #b79bff;
+  --glow: rgba(140, 150, 255, .6);
+  --card-tint: rgba(255, 255, 255, .0);
+  --logo-glow: rgba(80, 90, 255, .45);
+  --rim-1: rgba(255, 255, 255, .35);
+  --rim-2: rgba(160, 200, 255, .30);
+  --rim-3: rgba(255, 255, 255, .25);
+  --bubble-shine: rgba(255, 255, 255, .7);
+  --bubble-fill: rgba(255, 255, 255, .04);
+  --bubble-glow: rgba(20, 30, 90, .18);
+  --stars: 0;
+  --sky:
+    radial-gradient(60% 45% at 15% 12%, rgba(80, 140, 255, .55), transparent 70%),
+    radial-gradient(55% 45% at 90% 40%, rgba(170, 100, 255, .45), transparent 70%),
+    radial-gradient(60% 50% at 30% 100%, rgba(60, 220, 200, .28), transparent 72%),
+    linear-gradient(160deg, #101a3d, #2a1a55);
+}
+
+/* Raios da coletânea: janela, painel, controle, etiqueta. Cápsula só no slider e no interruptor. */
+:root { --r-window: 10px; --r-panel: 8px; --r-control: 6px; --r-chip: 4px; }
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden; background: transparent;
+  color: var(--text); font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased; user-select: none; -webkit-user-select: none;
+}
+
+.shell {
+  position: relative; height: 100%; margin: 0; border-radius: var(--r-window); overflow: hidden;
+  display: flex; flex-direction: column; padding: 12px 12px 10px;
+  border: 1px solid var(--edge-dim);
+  box-shadow: inset 0 1px 0 var(--edge), inset 0 0 40px rgba(255, 255, 255, .03);
+}
+.backdrop { position: absolute; inset: 0; z-index: 0; background: var(--sky); }
+/* Estrelas: pontos estáticos (custo zero), algumas piscando só com opacidade. */
+.backdrop::before, .backdrop::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: var(--stars);
+  background-repeat: no-repeat;
+}
+.backdrop::before {
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, #fff, transparent),
+    radial-gradient(1px 1px at 27% 9%, #fff, transparent),
+    radial-gradient(1.4px 1.4px at 44% 22%, #e9ddff, transparent),
+    radial-gradient(1px 1px at 63% 7%, #fff, transparent),
+    radial-gradient(1.2px 1.2px at 78% 26%, #fff, transparent),
+    radial-gradient(1px 1px at 91% 14%, #d9ccff, transparent),
+    radial-gradient(1px 1px at 8% 46%, #fff, transparent),
+    radial-gradient(1.3px 1.3px at 34% 58%, #fff, transparent),
+    radial-gradient(1px 1px at 57% 41%, #e0d4ff, transparent),
+    radial-gradient(1px 1px at 86% 52%, #fff, transparent),
+    radial-gradient(1.1px 1.1px at 18% 77%, #fff, transparent),
+    radial-gradient(1px 1px at 71% 71%, #fff, transparent);
+}
+.backdrop::after {
+  background-image:
+    radial-gradient(1.6px 1.6px at 20% 32%, #fff, transparent),
+    radial-gradient(1.8px 1.8px at 69% 17%, #f1e9ff, transparent),
+    radial-gradient(1.5px 1.5px at 49% 84%, #fff, transparent),
+    radial-gradient(1.6px 1.6px at 93% 79%, #e7dcff, transparent);
+  animation: twinkle 5.5s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: calc(var(--stars) * .25); } to { opacity: var(--stars); } }
+
+.bubbles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.top, .list, .foot { position: relative; z-index: 2; }
+
+/* ---------- Cabeçalho ---------- */
+.top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; cursor: grab; }
+.brand { display: flex; align-items: center; gap: 8px; padding-left: 2px; }
+.brand h1 { margin: 0; font-size: 15px; font-weight: 650; letter-spacing: .2px; }
+.logo { width: 24px; height: 24px; filter: drop-shadow(0 3px 8px var(--logo-glow)); pointer-events: none; }
+.actions { display: flex; gap: 6px; }
+
+.glass-btn {
+  width: 26px; height: 26px; border-radius: var(--r-control); border: 1px solid var(--edge-dim);
+  background: var(--glass); color: var(--text); display: grid; place-items: center; cursor: pointer;
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: inset 0 1px 0 var(--edge), 0 3px 10px var(--shadow);
+  transition: transform .18s cubic-bezier(.3, 1.4, .5, 1), background .18s;
+}
+.glass-btn:hover { background: var(--glass-strong); transform: scale(1.08); }
+.glass-btn:active { transform: scale(.94); }
+.glass-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Lista e cartões ---------- */
+.list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 2px 2px 4px; scrollbar-width: none; }
+.list::-webkit-scrollbar { display: none; }
+
+.card {
+  position: relative; border-radius: var(--r-panel); padding: 10px 12px 10px;
+  background: linear-gradient(160deg, var(--glass-strong), var(--glass)), var(--card-tint);
+  border: 1px solid var(--edge-dim);
+  backdrop-filter: blur(22px) saturate(170%);
+  box-shadow: inset 0 1px 0 var(--edge), inset 0 -1px 0 rgba(255,255,255,.04), 0 8px 22px var(--shadow);
+  transition: opacity .25s, transform .25s;
+  cursor: default;
+}
+.card::before { /* brilho especular no topo */
+  content: ""; position: absolute; left: 1px; right: 1px; top: 1px; height: 42%;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.card.off .slider, .card.off .value { opacity: .45; }
+
+.row { display: flex; align-items: center; gap: 10px; }
+.glyph {
+  flex: none; width: 28px; height: 28px; border-radius: var(--r-control); display: grid; place-items: center;
+  font-weight: 650; font-size: 13px; background: rgba(255,255,255,.07);
+  border: 1px solid var(--edge-dim); box-shadow: inset 0 1px 0 var(--edge);
+}
+.meta { flex: 1; min-width: 0; }
+.name { font-weight: 600; font-size: 13.5px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sub { font-size: 11.5px; color: var(--text-dim); margin-top: 1px; line-height: 1.25; }
+
+/* Interruptor de vidro */
+.switch {
+  flex: none; width: 38px; height: 22px; border-radius: 99px; border: 1px solid var(--edge-dim);
+  background: rgba(255,255,255,.08); position: relative; cursor: pointer; padding: 0;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,.3);
+  transition: background .25s, box-shadow .25s;
+}
+.switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #fff, rgba(235,230,255,.8));
+  box-shadow: 0 2px 5px rgba(0,0,0,.4), inset 0 -2px 3px rgba(140,120,200,.35);
+  transition: transform .32s cubic-bezier(.3, 1.5, .5, 1), width .2s;
+}
+.switch[aria-checked="true"] { background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--glow); }
+.switch[aria-checked="true"]::after { transform: translateX(16px); }
+.switch:active::after { width: 20px; }
+.switch[aria-checked="true"]:active::after { transform: translateX(12px); }
+.switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Slider ---------- */
+.control { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+.slider { position: relative; flex: 1; height: 28px; touch-action: none; cursor: pointer; outline: none; transition: opacity .25s; }
+.slider .track {
+  position: absolute; left: 0; right: 0; top: 50%; height: 8px; margin-top: -4px; border-radius: 99px;
+  background: rgba(0,0,0,.35); box-shadow: inset 0 1px 4px rgba(0,0,0,.5), 0 1px 0 var(--edge-dim);
+  overflow: hidden;
+}
+.slider .fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 12px var(--glow);
+}
+.thumb {
+  position: absolute; top: 50%; left: 0; width: 40px; height: 22px; margin-top: -11px; border-radius: 99px;
+  background: rgba(255,255,255,.10);
+  backdrop-filter: url(#lens) blur(1.5px) saturate(190%) brightness(1.12);
+  border: 1px solid var(--edge);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.6), inset 0 -3px 6px rgba(150,110,255,.35),
+              0 4px 12px var(--shadow), 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .28s cubic-bezier(.3, 1.6, .5, 1), box-shadow .2s;
+  will-change: transform;
+}
+.thumb::before {
+  content: ""; position: absolute; left: 14%; right: 14%; top: 2px; height: 6px; border-radius: 99px;
+  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,0));
+}
+.slider.dragging .thumb { box-shadow: inset 0 2px 3px rgba(255,255,255,.75), inset 0 -3px 6px rgba(150,110,255,.5), 0 8px 20px var(--shadow), 0 0 16px var(--glow); }
+.slider:focus-visible .thumb { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.value { flex: none; width: 48px; text-align: right; font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.3px; transition: opacity .25s; }
+.value small { font-size: 11px; font-weight: 600; color: var(--text-dim); margin-left: 1px; }
+
+.chips { display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+.chip {
+  border: 1px solid var(--edge-dim); background: rgba(255,255,255,.05); color: var(--text);
+  border-radius: var(--r-chip); padding: 3px 9px; font-size: 11.5px; line-height: 1.4; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .18s cubic-bezier(.3, 1.5, .5, 1), border-color .15s;
+}
+.chip:hover { background: var(--glass-strong); border-color: var(--edge); transform: translateY(-1px); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Atalho que corresponde ao nível atual */
+.chip.on { border-color: var(--accent-2); background: color-mix(in srgb, var(--accent) 30%, transparent); }
+.tag { margin-left: auto; font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; }
+.tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2); }
+.tag.soft i { background: #8a8aa0; box-shadow: none; }
+
+.empty { margin: auto; text-align: center; color: var(--text-dim); font-size: 14px; line-height: 1.5; }
+
+.foot { margin-top: 6px; text-align: center; font-size: 11px; color: var(--text-dim); cursor: grab; }
+.all { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 0 6px; }
+.all-label { font-size: 11.5px; font-weight: 600; color: var(--text); opacity: .8; margin-right: 4px; }
+.single .all { display: none; }
+.hint { opacity: 1; }
+
+/* ---------- Redimensionar ---------- */
+/* Faixas invisíveis na borda da janela. A altura acompanha o conteúdo, então o tamanho é
+   definido pela largura: bordas laterais e cantos (topo/base sozinhos não fazem sentido). */
+.rz { position: absolute; z-index: 5; }
+.rz-w, .rz-e { top: 22px; bottom: 22px; width: 8px; cursor: ew-resize; }
+.rz-w { left: 0; } .rz-e { right: 0; }
+.rz-nw, .rz-ne, .rz-sw, .rz-se { width: 22px; height: 22px; }
+.rz-nw { left: 0; top: 0; cursor: nwse-resize; }
+.rz-se { right: 0; bottom: 0; cursor: nwse-resize; }
+.rz-ne { right: 0; top: 0; cursor: nesw-resize; }
+.rz-sw { left: 0; bottom: 0; cursor: nesw-resize; }
+
+/* ---------- Bolhas ---------- */
+.bubble { position: absolute; will-change: transform; transition: transform .6s cubic-bezier(.2, .8, .3, 1); }
+.bubble .b {
+  position: relative; width: 100%; height: 100%; border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 24%, var(--bubble-shine), rgba(255,255,255,.08) 24%, rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 70% 78%, rgba(196,170,255,.18), rgba(255,255,255,0) 40%),
+    radial-gradient(circle at 50% 50%, var(--bubble-fill) 0%, rgba(255,255,255,0) 58%, rgba(255,255,255,.12) 86%, rgba(255,255,255,.26) 100%);
+  border: 1px solid rgba(255,255,255,.26);
+  box-shadow: inset 0 0 18px rgba(200,170,255,.26), 0 0 22px var(--bubble-glow);
+  animation: float var(--dur) ease-in-out var(--delay) infinite alternate;
+}
+/* Borda iridescente (película de sabão) girando devagar: só transform, barato. */
+.bubble .b::before {
+  content: ""; position: absolute; inset: -1px; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--rim-1), var(--rim-2), var(--rim-3), transparent 60%, var(--rim-1));
+  -webkit-mask: radial-gradient(circle, transparent 63%, #000 66%, #000 70%, transparent 71%);
+          mask: radial-gradient(circle, transparent 63%, #000 66%, #000 70%, transparent 71%);
+  animation: spin var(--spin) linear infinite;
+  mix-blend-mode: screen;
+}
+@keyframes float {
+  0%   { transform: translate3d(0, 0, 0) scale(1, 1); }
+  50%  { transform: translate3d(calc(var(--dx) * .5), calc(var(--dy) * .6), 0) scale(1.06, .95); }
+  100% { transform: translate3d(var(--dx), var(--dy), 0) scale(.96, 1.05); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.paused .bubble .b, .paused .bubble .b::before, .paused .backdrop::after { animation-play-state: paused; }
+.paused * { transition-duration: 0s !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble .b, .bubble .b::before, .backdrop::after { animation: none; }
+}

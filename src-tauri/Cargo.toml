@@ -1,0 +1,39 @@
+[package]
+name = "penumbra"
+version = "0.1.0"
+description = "Escurece cada monitor individualmente"
+edition = "2021"
+
+[lib]
+name = "penumbra_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri-plugin-autostart = "2"
+tauri-plugin-global-shortcut = "2"
+
+[dependencies.windows]
+version = "0.61"
+features = [
+  "Win32_Foundation",
+  "Win32_Graphics_Gdi",
+  "Win32_UI_WindowsAndMessaging",
+  "Win32_Devices_Display",
+  "Win32_UI_HiDpi",
+  "Win32_System_LibraryLoader",
+  "Win32_System_Threading",
+]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

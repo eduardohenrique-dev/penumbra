@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Penumbra: coruja noturna com um olho na sombra. Cor identitária: violeta. -->
+  <defs>
+    <linearGradient id="bg" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#1b1036"/>
+      <stop offset="0.5" stop-color="#34197a"/>
+      <stop offset="1" stop-color="#5b21b6"/>
+    </linearGradient>
+    <radialGradient id="glowLow" cx="0.08" cy="1.02" r="0.9">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonHaze" cx="0.86" cy="0.08" r="0.55">
+      <stop offset="0" stop-color="#e4d9ff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#e4d9ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#433c58"/>
+      <stop offset="0.5" stop-color="#27222f"/>
+      <stop offset="1" stop-color="#15121b"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#514478"/>
+      <stop offset="1" stop-color="#1f1930"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a39abd"/>
+      <stop offset="1" stop-color="#5d5180"/>
+    </linearGradient>
+    <radialGradient id="disc" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="#6a5f8c" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#3a3350" stop-opacity="0.2"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="0.38" cy="0.3" r="0.82">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#ece3ff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </linearGradient>
+    <linearGradient id="beak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e8ff"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="topLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8ccff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#d8ccff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="rightHalf"><rect x="322" y="150" width="120" height="180"/></clipPath>
+    <clipPath id="tile"><rect x="16" y="16" width="480" height="480" rx="100"/></clipPath>
+    <clipPath id="headClip"><ellipse cx="256" cy="236" rx="148" ry="118"/></clipPath>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2"/></filter>
+    <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur14" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="drop" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0a0518" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- bloco: céu violeta, luar e estrelas -->
+  <rect x="16" y="16" width="480" height="480" rx="100" fill="url(#bg)"/>
+  <g clip-path="url(#tile)">
+    <rect x="16" y="16" width="480" height="480" fill="url(#glowLow)"/>
+    <rect x="16" y="16" width="480" height="480" fill="url(#moonHaze)"/>
+    <g fill="#ffffff">
+      <circle cx="78" cy="96" r="3" opacity="0.85"/><circle cx="118" cy="60" r="2" opacity="0.65"/>
+      <circle cx="442" cy="172" r="2.5" opacity="0.75"/><circle cx="60" cy="216" r="2" opacity="0.6"/>
+      <circle cx="456" cy="300" r="2" opacity="0.55"/><circle cx="398" cy="64" r="2" opacity="0.7"/>
+      <circle cx="250" cy="52" r="1.8" opacity="0.5"/>
+    </g>
+    <rect x="16" y="16" width="480" height="170" fill="url(#sheen)"/>
+    <ellipse cx="256" cy="466" rx="140" ry="14" fill="#0a0518" opacity="0.6" filter="url(#blur6)"/>
+  </g>
+
+  <g filter="url(#drop)">
+    <!-- asas -->
+    <ellipse cx="134" cy="332" rx="40" ry="98" fill="url(#wing)" transform="rotate(12 134 332)"/>
+    <ellipse cx="378" cy="332" rx="40" ry="98" fill="url(#wing)" transform="rotate(-12 378 332)"/>
+
+    <!-- corpo -->
+    <ellipse cx="256" cy="322" rx="126" ry="138" fill="url(#body)"/>
+
+    <!-- tufos -->
+    <path d="M118 204 C112 158 120 110 134 84 C138 77 146 77 152 82 C180 104 208 124 230 142 Z" fill="url(#body)"/>
+    <path d="M394 204 C400 158 392 110 378 84 C374 77 366 77 360 82 C332 104 304 124 282 142 Z" fill="url(#body)"/>
+
+    <!-- cabeça -->
+    <ellipse cx="256" cy="236" rx="148" ry="118" fill="url(#body)"/>
+    <g clip-path="url(#headClip)">
+      <ellipse cx="256" cy="118" rx="140" ry="52" fill="url(#topLight)" opacity="0.4" filter="url(#blur14)"/>
+    </g>
+    <path d="M166 148 Q256 108 346 148" fill="none" stroke="#d8ccff" stroke-opacity="0.6" stroke-width="7" stroke-linecap="round" filter="url(#blur3)"/>
+    <path d="M135 90 C124 118 118 160 120 198" fill="none" stroke="#c4b5fd" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round" filter="url(#blur3)"/>
+    <path d="M377 90 C388 118 394 160 392 198" fill="none" stroke="#c4b5fd" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round" filter="url(#blur3)"/>
+
+    <!-- disco facial -->
+    <circle cx="190" cy="240" r="86" fill="url(#disc)"/>
+    <circle cx="322" cy="240" r="86" fill="url(#disc)"/>
+
+    <!-- barriga com penas -->
+    <ellipse cx="256" cy="372" rx="82" ry="84" fill="url(#belly)"/>
+    <g fill="none" stroke="#2a2340" stroke-opacity="0.45" stroke-width="6.5" stroke-linecap="round">
+      <path d="M214 350 q 14 14 28 0"/><path d="M242 350 q 14 14 28 0"/><path d="M270 350 q 14 14 28 0"/>
+      <path d="M200 384 q 14 14 28 0"/><path d="M228 384 q 14 14 28 0"/><path d="M256 384 q 14 14 28 0"/><path d="M284 384 q 14 14 28 0"/>
+      <path d="M214 418 q 14 12 28 0"/><path d="M242 418 q 14 12 28 0"/><path d="M270 418 q 14 12 28 0"/>
+    </g>
+
+    <!-- pés -->
+    <ellipse cx="208" cy="458" rx="30" ry="13" fill="url(#beak)"/>
+    <ellipse cx="304" cy="458" rx="30" ry="13" fill="url(#beak)"/>
+  </g>
+
+  <!-- olhos: halo, aro e disco de vidro -->
+  <circle cx="190" cy="240" r="80" fill="#a855f7" opacity="0.24" filter="url(#blur6)"/>
+  <circle cx="322" cy="240" r="80" fill="#a855f7" opacity="0.24" filter="url(#blur6)"/>
+  <circle cx="190" cy="240" r="67" fill="url(#ring)"/>
+  <circle cx="322" cy="240" r="67" fill="url(#ring)"/>
+  <circle cx="190" cy="240" r="56" fill="url(#eye)"/>
+  <circle cx="322" cy="240" r="56" fill="url(#eye)"/>
+
+  <!-- penumbra: o olho direito fica meio na sombra -->
+  <g clip-path="url(#rightHalf)">
+    <circle cx="322" cy="240" r="56" fill="#0b0912" opacity="0.74"/>
+  </g>
+
+  <!-- pupilas e brilhos -->
+  <circle cx="196" cy="246" r="27" fill="#0d0a18"/>
+  <circle cx="316" cy="246" r="27" fill="#07060c"/>
+  <circle cx="185" cy="233" r="10" fill="#ffffff"/>
+  <circle cx="305" cy="233" r="10" fill="#ffffff" opacity="0.9"/>
+  <circle cx="207" cy="259" r="4" fill="#ffffff" opacity="0.7"/>
+  <circle cx="327" cy="259" r="4" fill="#ffffff" opacity="0.35"/>
+
+  <!-- bico -->
+  <path d="M256 270 L239 300 Q256 318 273 300 Z" fill="url(#beak)"/>
+  <path d="M256 274 L247 296" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- borda de vidro -->
+  <rect x="17.5" y="17.5" width="477" height="477" rx="98.5" fill="none" stroke="url(#rim)" stroke-width="3"/>
+</svg>
